@@ -1,0 +1,67 @@
+<app-navbar></app-navbar>
+<div class="bg0 p-t-75 p-b-85">
+    <div class="container">
+        <div class="main-content" style="margin-top: 5%;">
+            <div class="alert alert-success text-center" *ngIf="message_show">{{message_text}}</div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-md-12">
+                        <div class="card">
+                            <div class="card-header card-header-danger">
+                                <h4 class="card-title">Contact Us</h4>
+                                <p class="card-category">Fillup the form to reach us</p>
+                            </div>
+                            <div class="card-body">
+                                <form [formGroup]="contact_us" (ngSubmit)="submitContactUs(contact_us)" #formDir="ngForm">
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Name" formControlName="name">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Email address" formControlName="email" type="email">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Address</label>
+                                            <mat-form-field class="example-full-width">
+                                                <textarea matInput placeholder="Address" formControlName="address"></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="City" formControlName="city" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <mat-form-field class="example-full-width">
+                                                <input matInput placeholder="Contact Number" formControlName="contact_no" type="text">
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <div class="row">
+                                        <div class="col-md-12">
+                                            <label>Message</label>
+                                            <mat-form-field class="example-full-width">
+                                                <textarea matInput placeholder="Message" formControlName="message"></textarea>
+                                            </mat-form-field>
+                                        </div>
+                                    </div>
+                                    <button [disabled]="!contact_us.valid" mat-raised-button type="submit" class="btn btn-danger pull-right">Contact Us</button>
+                                    <div class="clearfix"></div>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+</div>
+</div>
+<app-footer></app-footer>

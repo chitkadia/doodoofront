@@ -1,0 +1,23 @@
+<div mat-dialog-content>
+    <h1>Please do not refresh this page...</h1>
+    <form method="post" action="{{call_url}}" name="f1" id="f1">
+        <table border="1">
+            <tbody>
+                <input type="hidden" name="MID" [value]="paramList.MID">
+                <input type="hidden" name="ORDER_ID" [value]="paramList.ORDER_ID">
+                <input type="hidden" name="CUST_ID" [value]="paramList.CUST_ID">
+                <input type="hidden" name="INDUSTRY_TYPE_ID" [value]="paramList.INDUSTRY_TYPE_ID">
+                <input type="hidden" name="CHANNEL_ID" [value]="paramList.CHANNEL_ID">
+                <input type="hidden" name="TXN_AMOUNT" [value]="paramList.TXN_AMOUNT">
+                <input type="hidden" name="WEBSITE" [value]="paramList.WEBSITE">
+                <input type="hidden" name="CALLBACK_URL" [value]="paramList.CALLBACK_URL">
+                <input type="hidden" name="PAYMENT_MODE_ONLY" [value]="payment_mode_only">
+                <input type="hidden" name="AUTH_MODE" [value]="auth_mode">
+                <input type="hidden" name="PAYMENT_TYPE_ID" [value]="payment_type_id">
+                <input type="hidden" name="CARD_TYPE" [value]="card_type">
+
+                <input type="hidden" name="CHECKSUMHASH" [value]="checksum">
+            </tbody>
+        </table>
+    </form>
+</div>

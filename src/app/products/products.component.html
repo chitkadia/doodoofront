@@ -1,0 +1,88 @@
+<app-navbar></app-navbar>
+<div class="bg0 p-t-75 p-b-85">
+	<div class="container">
+		<div class="flex-w flex-sb-m p-b-52">
+			<div class="flex-w flex-l-m filter-tope-group m-tb-10">
+				<button (click)="filterAgeGroup(null)" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5 how-active1" data-filter="*">
+					All {{ category_id == 1 ? 'Books' : 'Toys' }}
+				</button>
+
+				<span *ngFor="let age_row of age_rows; let i = index">
+					<button (click)="filterAgeGroup(age_row.id)" class="stext-106 cl6 hov1 bor3 trans-04 m-r-32 m-tb-5" data-filter=".women">
+						{{ age_row.age_category_name }}
+					</button>
+				</span>
+			</div>
+
+			<div class="flex-w flex-c-m m-tb-10">
+				<div>
+					<mat-form-field>
+						<mat-select placeholder="Sub Category" (selectionChange)="getFilterCat($event)">
+							<mat-option value="0">
+								All Sub Category
+							</mat-option>
+							<mat-option *ngFor="let sub_cat_row of sub_cat_rows" [value]="sub_cat_row.id">
+								{{ sub_cat_row.sub_category_name }}
+							</mat-option>
+						</mat-select>
+					</mat-form-field>
+				</div>
+			</div>
+		</div>
+
+		<ng-template [ngIf]="!show_spinner">
+			<div class="row isotope-grid" *ngIf="rows?.length;else no_record_tmpl">
+				<div class="col-sm-6 col-md-4 col-lg-3 p-b-35 isotope-item women" *ngFor="let row of rows; let i = index">
+					<!-- Block2 -->
+					<div class="block2">
+						<div class="block2-pic hov-img0">
+							<img [src]="row.product_default_image.full_path | safeHtml" [alt]="row.product_default_image.image_name">
+
+							<!-- <a href="#" class="block2-btn flex-c-m stext-103 cl2 size-102 bg0 bor2 hov-btn1 p-lr-15 trans-04 js-show-modal1">
+									Quick View
+								</a> -->
+						</div>
+
+						<div class="block2-txt flex-w flex-t p-t-14">
+							<div class="block2-txt-child1 flex-col-l ">
+								<a href="javascript:void(0)" (click)="goToProductDetail(row.id, row.product_category_id)" class="stext-104 cl4 hov-cl1 trans-04 js-name-b2 p-b-6">
+									{{ row.product_name }}
+								</a>
+
+								<span class="stext-105 cl3">
+									&#x20b9; {{ row.product_price }}
+								</span>
+							</div>
+
+							<div class="block2-txt-child2 flex-r p-t-3">
+								<a href="#" class="btn-addwish-b2 dis-block pos-relative js-addwish-b2">
+									<img class="icon-heart1 dis-block trans-04" src="../../assets/images/icons/icon-heart-01.png" alt="ICON">
+									<img class="icon-heart2 dis-block trans-04 ab-t-l" src="../../assets/images/icons/icon-heart-02.png" alt="ICON">
+								</a>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+
+			<ng-template #no_record_tmpl>
+				<div class="flex-c-m flex-w w-full p-t-45">
+					<span>There will something exiting for you</span>
+				</div>
+			</ng-template>
+
+			<!-- Load more -->
+			<div *ngIf="total_pages > 1 && cur_page != total_pages && rows?.length" class="flex-c-m flex-w w-full p-t-45">
+				<a href="javascript:void(0)" (click)="loadMore()" class="flex-c-m stext-101 cl5 size-103 bg2 bor1 hov-btn1 p-lr-15 trans-04">
+					Load More
+				</a>
+			</div>
+		</ng-template>
+		<ng-template [ngIf]="show_spinner">
+			<div class="center-block">
+				<mat-spinner></mat-spinner>
+			</div>
+		</ng-template>
+	</div>
+</div>
+<app-footer></app-footer>
